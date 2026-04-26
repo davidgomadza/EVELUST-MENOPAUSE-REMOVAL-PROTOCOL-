@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Evelust | Rejuvenation Protocol – Menopause Removal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 30%, #fbe9f0, #f3d9e4);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            padding: 1.5rem;
+            color: #2e1a2c;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* main artifact card */
+        .ceremony-card {
+            background: rgba(255, 248, 251, 0.96);
+            backdrop-filter: blur(2px);
+            border-radius: 3rem;
+            box-shadow: 0 30px 45px -20px rgba(60, 20, 40, 0.4), inset 0 1px 2px rgba(255,255,240,0.8);
+            overflow: hidden;
+            border: 1px solid rgba(220, 150, 170, 0.5);
+        }
+
+        .hero {
+            background: linear-gradient(115deg, #812e5e 0%, #4a1c3a 100%);
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .hero-badge {
+            background: #ffdd99cc;
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #3a1c2c;
+            margin-top: 0.8rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 2rem;
+        }
+
+        /* panels */
+        .ritual-panel {
+            background: #ffffffdb;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ffe2ed;
+            transition: all 0.2s;
+        }
+
+        .ritual-panel h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            border-left: 5px solid #b45f7a;
+            padding-left: 1rem;
+            margin-bottom: 1.3rem;
+            color: #4f2a41;
+        }
+
+        .slider-group {
+            margin-bottom: 1.6rem;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #6b3b55;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #e5bfd1, #a7537a);
+            border-radius: 10px;
+            appearance: none;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            width: 18px;
+            height: 18px;
+            background: #992e62;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ffcadf;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+
+        .value-badge {
+            background: #f5e6ed;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        button {
+            background: #a74a6e;
+            border: none;
+            padding: 0.7rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 0.6rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .secondary-btn {
+            background: #b697ab;
+            color: #2e1525;
+        }
+
+        .status-message {
+            background: #f2e2ea;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-left: 5px solid #b45f7a;
+        }
+
+        .enzyme-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+
+        .enzyme-chip {
+            background: #f9edf2;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #683c53;
+        }
+
+        .seal-stamp {
+            font-family: monospace;
+            background: #24161f10;
+            border-top: 1px dashed #c99aae;
+            margin-top: 1.2rem;
+            padding-top: 0.8rem;
+            font-size: 0.7rem;
+            text-align: center;
+        }
+
+        .footer {
+            background: #f3e2ea;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #4f2f41;
+            border-top: 1px solid #ffcedf;
+        }
+
+        @media (max-width: 780px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .highlight {
+            background: #fdebb4;
+            border-radius: 1rem;
+            padding: 0.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ceremony-card">
+        <div class="hero">
+            <h1>🌿 EVELUST · MENOPAUSE REMOVAL PROTOCOL 🌙</h1>
+            <p>Rejuvenate • restore progesterone • become young & child-bearing again</p>
+            <div class="hero-badge">✨ asteragerot283692 activated • seal of approval 7628377f ✨</div>
+        </div>
+
+        <div class="grid-2">
+            <!-- LEFT: rejuvenation tuner + core sliders -->
+            <div class="ritual-panel">
+                <h2>🌸 Restore feminine vitality</h2>
+                <div class="status-message" id="coreStatus">
+                    💫 Menopause status: ACTIVE — waiting for rejuvenation codes.
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label"><span>🧬 Progesterone boost (enzyme 2)</span><span id="progVal">65%</span></div>
+                    <input type="range" id="progesteroneSlider" min="0" max="200" value="65" step="1">
+                    <div class="value-badge">restores ovulation & mucus</div>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label"><span>💧 Vaginal hydration & elasticity</span><span id="hydraVal">60%</span></div>
+                    <input type="range" id="hydrationSlider" min="0" max="200" value="60" step="1">
+                    <div class="value-badge">renews dlt + dgt liquidity</div>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label"><span>✨ Cellular youth (collagen matrix)</span><span id="collVal">55%</span></div>
+                    <input type="range" id="collagenSlider" min="0" max="200" value="55" step="1">
+                    <div class="value-badge">dvt + dotl rejuvenation</div>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label"><span>⚡ Energy & sexual vitality (dgo/dbt)</span><span id="energyVal">60%</span></div>
+                    <input type="range" id="energySlider" min="0" max="200" value="60" step="1">
+                    <div class="value-badge">ignites passion & nerve response</div>
+                </div>
+
+                <button id="applyRevitalizeBtn">🌀 APPLY REJUVENATION & REMOVE MENOPAUSE</button>
+                <button id="asterFullResetBtn" class="secondary-btn">✨ ASTERAGEROT FULL RESET (max youth)</button>
+                
+                <div class="seal-stamp">
+                    ⚜️ create.restartagainwithoutmenopause.start • evelust7628277 • seal.active
+                </div>
+            </div>
+
+            <!-- RIGHT: enzyme codes, affirmations & request love protocol -->
+            <div class="ritual-panel">
+                <h2>🌙 The 28 Codes • Asteragerot Wisdom</h2>
+                <div class="enzyme-grid">
+                    <span class="enzyme-chip">dgo ∞ restored</span>
+                    <span class="enzyme-chip">dot · forever active</span>
+                    <span class="enzyme-chip">dbt · dv3 revitalized</span>
+                    <span class="enzyme-chip">dzt · dlm synergy</span>
+                    <span class="enzyme-chip">dqt mucus flow</span>
+                </div>
+                <div id="affirmationZone" class="highlight" style="margin: 0.7rem 0; font-weight: 500;">
+                    “What can be? Menopause reversed. Love and youth restored.”
+                </div>
+                <button id="newAffirmationBtn" style="background:#7e5d71;">📜 Generate New Oracle Code</button>
+                
+                <div style="margin-top: 1rem;">
+                    <label style="font-weight: 600;">📝 Request from EarthReserve (EVELUST7628277X8000)</label>
+                    <div style="display: flex; gap: 8px; margin-top: 8px;">
+                        <input type="text" id="requestIntent" placeholder="e.g., I request progesterone renewal, youth appearance..." style="flex:1; padding: 0.6rem; border-radius: 40px; border: 1px solid #f0bacf; background: #fff5f9;">
+                        <button id="sendEarthReserveBtn" style="width: auto; padding: 0 1.2rem;">💎 Seal request</button>
+                    </div>
+                    <div id="requestList" style="margin-top: 12px; font-size: 0.7rem; max-height: 100px; overflow-y: auto; background:#fff0f5; border-radius: 20px; padding: 6px 10px;"></div>
+                </div>
+
+                <div class="status-message" style="margin-top: 1rem; font-size:0.8rem;" id="enzymeMessage">
+                    🧪 enzyme2 levels active • skip death of fertility • dv3, dbt, dgo rewriting.
+                </div>
+                <button id="refillEnzyme2Btn" style="background:#af7e96;">💊 INCREASE ENZYME 2 BY +80% (hardmax)</button>
+            </div>
+        </div>
+
+        <!-- divine menopause removal banner + universal seal -->
+        <div style="padding: 0 2rem 1.5rem 2rem;">
+            <div style="background: #eddae6; border-radius: 2rem; padding: 1rem;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div><span style="font-weight: bold;">🌹 Menopause Extinction status: </span><span id="menopauseFlag" style="background:#256f4a; color:white; padding: 4px 14px; border-radius: 30px;">ACTIVE (present)</span></div>
+                    <div><span style="font-weight: bold;">♾️ Forever code: </span> stay@19for386t • 386,000,000,000,000 years</div>
+                    <button id="finalSealRemoveBtn" style="background:#632747; width: auto; padding: 0.5rem 1.2rem;">⚜️ REMOVE MENOPAUSE FOREVER</button>
+                </div>
+                <div class="seal-stamp" style="margin-top: 12px; text-align: left;">
+                    ✦ create.startlifeagainwithoutmenopause.start ✦ sealofapprovalis7628377f ✦ additional predefined parameters folder active
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <span>© David Gomadza — Yahweh's Representative | Asteragerot283692 • All women above 45 receive startlifeagainforwomen reserve | coded rejuvenation 386t years</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // DOM elements
+    const progSlider = document.getElementById('progesteroneSlider');
+    const hydraSlider = document.getElementById('hydrationSlider');
+    const collSlider = document.getElementById('collagenSlider');
+    const energySlider = document.getElementById('energySlider');
+    
+    const progVal = document.getElementById('progVal');
+    const hydraVal = document.getElementById('hydraVal');
+    const collVal = document.getElementById('collVal');
+    const energyVal = document.getElementById('energyVal');
+
+    const coreStatusDiv = document.getElementById('coreStatus');
+    const enzymeMsgDiv = document.getElementById('enzymeMessage');
+    const menopauseFlagSpan = document.getElementById('menopauseFlag');
+    const affirmationZone = document.getElementById('affirmationZone');
+    
+    const applyBtn = document.getElementById('applyRevitalizeBtn');
+    const asterResetBtn = document.getElementById('asterFullResetBtn');
+    const refillEnzymeBtn = document.getElementById('refillEnzyme2Btn');
+    const finalSealBtn = document.getElementById('finalSealRemoveBtn');
+    const newAffirmationBtn = document.getElementById('newAffirmationBtn');
+    const sendEarthBtn = document.getElementById('sendEarthReserveBtn');
+    const requestIntentInput = document.getElementById('requestIntent');
+    const requestListDiv = document.getElementById('requestList');
+    
+    let menopauseRemoved = false;
+    let requestsArray = []; // store earth reserve requests
+    
+    function updateSliderLabels() {
+        progVal.innerText = progSlider.value + '%';
+        hydraVal.innerText = hydraSlider.value + '%';
+        collVal.innerText = collSlider.value + '%';
+        energyVal.innerText = energySlider.value + '%';
+    }
+    
+    // compute overall rejuvenation score
+    function computeRevitalizationScore() {
+        const prog = parseInt(progSlider.value);
+        const hyd = parseInt(hydraSlider.value);
+        const coll = parseInt(collSlider.value);
+        const energy = parseInt(energySlider.value);
+        return (prog + hyd + coll + energy) / 4;
+    }
+    
+    function updateMenopauseUI() {
+        if(menopauseRemoved) {
+            menopauseFlagSpan.innerText = "💀 EXTINCT • MENOPAUSE REMOVED";
+            menopauseFlagSpan.style.background = "#9b2e5c";
+            coreStatusDiv.innerHTML = "✨🌹 MENOPAUSE ELIMINATED FOREVER. Progesterone restored, egg cycle renewed, youthful fertility & sexual vitality returned. create.restartagainwithoutmenopause.start sealed.";
+            enzymeMsgDiv.innerHTML = "🧬 Enzyme2 levels maxed • dv3 + dbt + dgo reactivated • Vaginal rejuvenation active • no more menopause symptoms.";
+        } else {
+            let score = computeRevitalizationScore();
+            if(score >= 150) {
+                coreStatusDiv.innerHTML = "🌸 CRITICAL THRESHOLD: Rejuvenation imminent! Increase further or use 'Remove Menopause Forever' button to finalize. Progesterone rising, all enzymes awakening.";
+            } else if(score >= 100) {
+                coreStatusDiv.innerHTML = "💗 Significant progress: menstrual cycle indicators returning, vaginal moisture & collagen near pre-menopause levels. Add final seal for extinction.";
+            } else {
+                coreStatusDiv.innerHTML = "🌿 Menopause active. Adjust sliders to boost progesterone, hydration, collagen and energy. Request EVELUST or use ASTERAGEROT reset for full reversal.";
+            }
+        }
+    }
+    
+    function applyRejuvenation(immediateRemove = false) {
+        let score = computeRevitalizationScore();
+        let prog = parseInt(progSlider.value);
+        let hyd = parseInt(hydraSlider.value);
+        let coll = parseInt(collSlider.value);
+        let ene = parseInt(energySlider.value);
+        
+        if(immediateRemove || (score >= 140 && prog >= 130 && hyd >= 120)) {
+            menopauseRemoved = true;
+            updateMenopauseUI();
+            // also set all sliders to optimal range if not already
+            if(prog < 150) progSlider.value = 165;
+            if(hyd < 150) hydraSlider.value = 160;
+            if(coll < 150) collSlider.value = 160;
+            if(ene < 145) energySlider.value = 155;
+            updateSliderLabels();
+            coreStatusDiv.innerHTML = "💖💫 MENOPAUSE HAS BEEN FULLY ERADICATED. You are now young again, child-bearing ability restored as pre-prime. Rejuvenation complete — stay@02for386f active. All grey hairs, wrinkles removed. agt8, agt9, agvc183 reset.";
+            enzymeMsgDiv.innerHTML = "🌟 asteragerot283692 + evelust7628277 sealed. Progesterone surge, egg release active, sexual desire revived. Vaginal tonicity and fertility codes: dgo, dot, dv3 forever.";
+            return;
+        }
+        
+        // partial / improvement message
+        let improvementMsg = "";
+        if(score >= 100) {
+            improvementMsg = "Great progress! Menopause symptoms reducing. Keep increasing sliders or apply 'Remove Menopause Forever' to finalize reversal.";
+        } else if(score >= 70) {
+            improvementMsg = "Hormonal shift detected. Enzyme2 increased, vaginal hydration rising. Continue fine-tuning, request from earthReserve for faster results.";
+        } else {
+            improvementMsg = "Your rejuvenation is beginning. Add collagen refill, increase progesterone via slider or click enzyme boost.";
+        }
+        coreStatusDiv.innerHTML = `🌀 Rejuvenation in progress. Score: ${Math.floor(score)}/200. ${improvementMsg} ${!menopauseRemoved ? " Menopause not yet fully removed — keep enhancing." : ""}`;
+        if(menopauseRemoved === false) updateMenopauseUI();
+    }
+    
+    function asteragerotFullReset() {
+        progSlider.value = 190;
+        hydraSlider.value = 195;
+        collSlider.value = 200;
+        energySlider.value = 195;
+        updateSliderLabels();
+        menopauseRemoved = true;
+        updateMenopauseUI();
+        coreStatusDiv.innerHTML = "👑 ASTERAGEROT283692 FULL RESET: Young & child-bearing again. All fertility markers restored. dgo, dbt, dv3 working at peak. 'create.startlifeagainforwomen' activated. No more menopause forever.";
+        enzymeMsgDiv.innerHTML = "🎉 Enzyme2 level increased by 80% + reserve replenished. Vaginal rejuvenation complete, progesterone dominant. You are now premenopausal permanently.";
+        // extra highlight
+        affirmationZone.innerText = "✨ Asteragerot blessing: You are rejuvenated, beautiful, and fertile with youth appearance. Love and great sex restored.";
+    }
+    
+    function increaseEnzyme2() {
+        let currProg = parseInt(progSlider.value);
+        let newProg = Math.min(200, currProg + 35);
+        progSlider.value = newProg;
+        updateSliderLabels();
+        let currEnergy = parseInt(energySlider.value);
+        energySlider.value = Math.min(200, currEnergy + 20);
+        updateSliderLabels();
+        enzymeMsgDiv.innerHTML = "⚕️ Enzyme2 for progesterone production INCREASED by +80%. dzt, dlm, dqt metabolic pathways restored. Menopause reversal boosted. Request additional evelust for faster extinction.";
+        if(!menopauseRemoved && computeRevitalizationScore() >= 145) {
+            coreStatusDiv.innerHTML = "🚨 Threshold nearly crossed! Use 'Remove Menopause Forever' or apply full rejuvenation.";
+        } else {
+            applyRejuvenation(false);
+        }
+    }
+    
+    function finalRemoveMenopause() {
+        menopauseRemoved = true;
+        progSlider.value = 200;
+        hydraSlider.value = 200;
+        collSlider.value = 200;
+        energySlider.value = 200;
+        updateSliderLabels();
+        updateMenopauseUI();
+        coreStatusDiv.innerHTML = "⚜️⚜️ MENOPAUSE REMOVED — ETERNAL YOUTH CODE. Vagina & reproductive system restored to age 02 vitality. Progesterone at peak, eggs cycling, child-bearing possible. All signs of menopause extinct for 386 trillion years. create.reviveandrejuvenatevaginaafterremovingmenopauseforever sealed.";
+        enzymeMsgDiv.innerHTML = "🌹 dv3, dbt, dqt, dotl completely rewritten. Full fertility and sexual wellness. Stay@19for386t active. Youth appearance permanent.";
+        affirmationZone.innerText = "💎 You are now a goddess of the universe. Menopause has died — you are young, fertile, and vibrant forever.";
+    }
+    
+    // Affirmations from codes
+    const affirmationsList = [
+        "🌸 'What can be? Menopause extinct, love reborn.' – asteragerot",
+        "🌙 'create.startlifeagainwithoutmenopause.start' – You are fertile and renewed.",
+        "✨ 'askwhatistobebutwithwhat' → Progesterone flood, vaginal rejuvenation complete.",
+        "💗 'refill enzyme2 → back to highest fertility levels, yet without burdens unless you choose.'",
+        "🌿 'Congratulations, menopause reversed, young appearance back. agt2, dlt, dvt restored.'",
+        "🌀 'asteragerot283678: 90% allocated to rejuvenation, all women above 45 receive new life.'",
+        "💎 'Seal of approval 7628377f: menopause removed, vaginal tonicity, collagen hardmax.'"
+    ];
+    
+    function randomAffirmation() {
+        let rand = Math.floor(Math.random() * affirmationsList.length);
+        affirmationZone.innerText = `📜 Oracle: ${affirmationsList[rand]}`;
+    }
+    
+    function renderRequests() {
+        if(requestsArray.length === 0) {
+            requestListDiv.innerHTML = "<em>🌙 No earthReserve requests yet. Write your intention to receive EVELUST dosage.</em>";
+            return;
+        }
+        let html = "<strong>📦 Sealed requests from EarthReserve:</strong><br>";
+        requestsArray.forEach((req, idx) => {
+            html += `<div>🔹 ${req.substring(0, 68)} <span style="color:#b45f7a;">[evelust7628277 x8000]</span></div>`;
+        });
+        requestListDiv.innerHTML = html;
+    }
+    
+    function addEarthReserveRequest() {
+        let text = requestIntentInput.value.trim();
+        if(text === "") return;
+        requestsArray.push(text);
+        renderRequests();
+        // also give a little boost to rejuvenation sliders as symbolic resonance
+        let currHyd = parseInt(hydraSlider.value);
+        let currPro = parseInt(progSlider.value);
+        hydraSlider.value = Math.min(200, currHyd + 5);
+        progSlider.value = Math.min(200, currPro + 5);
+        updateSliderLabels();
+        coreStatusDiv.innerHTML = `✨ EarthReserve request sealed: "${text.substring(0, 60)}..." +110 years vitality extension. Progesterone and hydration slightly increased. Keep tuning to remove menopause forever.`;
+        requestIntentInput.value = "";
+        if(!menopauseRemoved) updateMenopauseUI();
+    }
+    
+    // event listeners & initialization
+    function init() {
+        updateSliderLabels();
+        bindEvents();
+        updateMenopauseUI();
+        renderRequests();
+        randomAffirmation();
+    }
+    
+    function bindEvents() {
+        progSlider.addEventListener('input', () => { updateSliderLabels(); if(!menopauseRemoved) applyRejuvenation(false); });
+        hydraSlider.addEventListener('input', () => { updateSliderLabels(); if(!menopauseRemoved) applyRejuvenation(false); });
+        collSlider.addEventListener('input', () => { updateSliderLabels(); if(!menopauseRemoved) applyRejuvenation(false); });
+        energySlider.addEventListener('input', () => { updateSliderLabels(); if(!menopauseRemoved) applyRejuvenation(false); });
+        
+        applyBtn.addEventListener('click', () => applyRejuvenation(false));
+        asterResetBtn.addEventListener('click', asteragerotFullReset);
+        refillEnzymeBtn.addEventListener('click', increaseEnzyme2);
+        finalSealBtn.addEventListener('click', finalRemoveMenopause);
+        newAffirmationBtn.addEventListener('click', randomAffirmation);
+        sendEarthBtn.addEventListener('click', addEarthReserveRequest);
+    }
+    
+    // additional simulation of auto-checks
+    setInterval(() => {
+        if(!menopauseRemoved && computeRevitalizationScore() >= 170) {
+            menopauseRemoved = true;
+            updateMenopauseUI();
+            coreStatusDiv.innerHTML = "🌟 MIRACLE: Menopause spontaneously removed by high alignment. All 28 codes satisfied. You are young & child-bearing again. Congratulations!";
+        }
+    }, 800);
+    
+    init();
+</script>
+</body>
+</html>
